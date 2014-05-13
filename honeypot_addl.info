@@ -1,0 +1,9 @@
+; $Id: honeypot_addl.info,v 1.4 2014/05/12 213:00:00 fnikola Exp $
+name = Honeypot Additional
+description = Additional processing for honeypot module (i.e. log spam form submissions to DB).
+package = Other
+core = 6.x
+; Information added by fnikola
+version = "6.x-1.0"
+core = "6.x"
+project = "honeypot_addl"
