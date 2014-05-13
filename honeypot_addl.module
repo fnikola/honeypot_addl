@@ -17,8 +17,9 @@
  *     - honeypot_time: If form was completed before the configured time limit.
  */
 function honeypot_addl_honeypot_reject($form_id, $uid, $type) {
+  drupal_set_message('<pre>'. check_plain(print_r($form_id, TRUE)) .'</pre>');
   if ($form_id == 'mymodule_form') {
-    // Do something...
+    // Log to honeypot tracker
     db_query('INSERT INTO {honeypot_tracker} (form_id, type, uid, hostname, timestamp) VALUES (%s, %s, %d, %s, %d)', $form_id, $type, $user->uid, ip_address(), time());
   }
 }
