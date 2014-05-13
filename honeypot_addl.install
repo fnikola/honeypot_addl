@@ -12,6 +12,7 @@ function honeypot_addl_schema() {
   $schema['honeypot_tracker'] = array(
     'fields' => array(
       'hid' => array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE, 'disp-width' => '11'),
+      'form_id' => array('type' => 'varchar', 'length' => '128', 'not null' => TRUE, 'default' => ''),
       'type' => array('type' => 'varchar', 'length' => '128', 'not null' => TRUE, 'default' => ''),
       'uid' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE, 'default' => 0, 'disp-width' => '10'),
       'hostname' => array('type' => 'varchar', 'length' => '15', 'not null' => TRUE, 'default' => ''),
@@ -19,6 +20,7 @@ function honeypot_addl_schema() {
     ),
     'primary key' => array('hid'),
     'indexes' => array(
+      'form_id' => array('form_id'),
       'type' => array('type'),
       'uid' => array('uid'),
       'hostname' => array('hostname'),
