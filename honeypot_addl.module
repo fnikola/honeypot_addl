@@ -19,7 +19,7 @@
 function honeypot_addl_honeypot_reject($form_id, $uid, $type) {
   if ($form_id == 'mymodule_form') {
     // Do something...
-    db_query('INSERT INTO {honeypot_tracker} (sid, uid, timestamp) VALUES (%d, %d)', $user->uid, time());
+    db_query('INSERT INTO {honeypot_tracker} (form_id, type, uid, hostname, timestamp) VALUES (%s, %s, %d, %s, %d)', $form_id, $type, $user->uid, ip_address(), time());
   }
 }
 
