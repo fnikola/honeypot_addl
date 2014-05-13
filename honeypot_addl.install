@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Defines Honeypot Additional module schema.
+ */
+
+/**
+ *
+ */
+function honeypot_addl_schema() {
+  $schema['honeypot_tracker'] = array(
+    'fields' => array(
+      'hid' => array('type' => 'serial', 'unsigned' => TRUE, 'not null' => TRUE, 'disp-width' => '11'),
+      'type' => array('type' => 'varchar', 'length' => '128', 'not null' => TRUE, 'default' => ''),
+      'hostname' => array('type' => 'varchar', 'length' => '15', 'not null' => TRUE, 'default' => ''),
+      'timestamp' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => FALSE, 'default' => 0, 'disp-width' => '11'),
+    ),
+    'primary key' => array('hid'),
+    'indexes' => array(
+      'type' => array('type'),
+      'hostname' => array('hostname'),
+      'timestamp' => array('timestamp'),
+    ),
+  );
+  return $schema;
+}
+
+function honeypot_addl_install() {
+  // Create my tables.
+  drupal_install_schema('honeypot_addl');
+}
+
+function honeypot_addl_uninstall() {
+  // Remove tables.
+  drupal_uninstall_schema('honeypot_addl');
+  drupal_set_message(t('All Honeypot Additional module tables have been deleted.'));
+}
